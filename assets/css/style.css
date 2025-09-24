@@ -1,0 +1,197 @@
+:root {
+  --header-height: 72px;
+  --bg: #0b1220;
+  --card: #0f1724;
+  --accent: #1976d2;
+  --accent-2: #64b5f6;
+  --muted: #cfd8e3;
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; scroll-behavior: smooth; }
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(180deg, #071022 0%, #0b1220 100%);
+  color: var(--muted);
+  font-size: 16px;
+  padding-top: calc(var(--header-height) + 16px);
+  line-height: 1.5;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: linear-gradient(90deg, #09203f 0%, #1976d2 100%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.logo { font-size: 1.3rem; font-weight: bold; color: #fff; }
+
+/* MENÚ */
+.menu ul { display: flex; gap: 20px; list-style: none; }
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+.menu a:hover { background: rgba(255,255,255,0.15); }
+.menu a.active { background: #fff; color: #1976d2; }
+
+/* BOTÓN HAMBURGUESA */
+.menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* LAYOUT */
+main {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  padding: 12px 20px;
+}
+
+/* HERO */
+.hero img {
+  width: 100%; border-radius: 12px;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.hero h1 { color: var(--accent-2); margin-bottom: 10px; }
+.hero p { color: #cbd9ea; }
+
+/* PRODUCTOS */
+.section-title { margin: 30px 0 15px; text-align: center; color: var(--accent-2); }
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
+}
+.card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+.card h3 { color: var(--accent-2); margin-bottom: 6px; }
+.precio { color: #fff; font-weight: bold; margin-bottom: 10px; }
+.btn {
+  background: var(--accent);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+
+/* SIDEBAR */
+.sidebar {
+  background: #111827;
+  padding: 20px;
+  border-radius: 12px;
+}
+.sidebar h2 { color: var(--accent-2); margin-bottom: 10px; }
+.sidebar li {
+  list-style: none;
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+/* FOOTER */
+footer {
+  background: #09203f;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+/* MEDIA QUERIES */
+/* Móvil */
+@media (max-width: 600px) {
+  .menu-btn { display: block; }
+  .menu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: var(--header-height);
+    left: 0; right: 0;
+    background: #09203f;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    animation: slideDown 0.3s ease;
+  }
+  .menu.active { display: flex; }
+  .menu ul { flex-direction: column; }
+  .menu a { padding: 10px; border-radius: 6px; }
+  .menu a:hover { background: rgba(255,255,255,0.1); }
+  main { grid-template-columns: 1fr; }
+}
+/* Animación del menú */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1024px) {
+  main { grid-template-columns: 2fr 1fr; }
+}
+/* Escritorio */
+@media (min-width: 1025px) {
+  main { grid-template-columns: 2fr 1fr; }
+}
+
+.menu-btn {
+  display: block;
+}
+
+.menu {
+  display: none; /* por defecto oculto */
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background: #09203f;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+.menu.active {
+  display: flex; /* cuando se active con JS */
+}
+
+.menu ul {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu a {
+  padding: 10px;
+}
